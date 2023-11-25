@@ -5,7 +5,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Task extends Model {
   
-    static associate({ User, Place }) {
+    static associate({ User }) {
       Task.belongsTo(User, { as: 'author', foreignKey: 'author_id' })
     }
 
