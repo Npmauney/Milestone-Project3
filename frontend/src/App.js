@@ -1,30 +1,33 @@
-import { createContext, useEffect, useState } from "react";
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import Home from './Home'
+import TaskIndex from './tasks/TaskIndex'
+import Navigation from './Navigation'
+import Error404 from './Error404'
+import NewTaskForm from './tasks/NewTaskForm'
+import TaskDetails from './tasks/TaskDetails.js'
+import EditTaskForm from './tasks/EditTaskForm'
+import SignUpForm from './users/SignUpForm'
+import LoginForm from './users/LoginForm'
+import CurrentUserProvider from './contexts/CurrentUser'
 
-
-export const CurrentUser = createContext()
-
-function CurrentUserProvider({ children }){
-
-    const [currentUser, setCurrentUser] = useState(null)
-    useEffect(() => {
-
-        const getLoggedInUser = async () => {
-            let response = await fetch ('http://localhost:5000/authentication/profile', {
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`
-                }
-            })
-            let user = await response.json()
-            setCurrentUser(user)
-        }
-        getLoggedInUser()
-    }, [])
-
-    return (
-        <CurrentUser.Provider value={{ currentUser, setCurrentUser }}>
-            {children}
-        </CurrentUser.Provider>
-    )
+function App() {
+  return (
+    <CurrentUserProvider>
+      <BrowserRouter>
+        <Navigation />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/sign-up" component={SignUpForm} />
+          <Route exact path="/login" component={LoginForm} />
+          <Route exact path="/tasks" component={TaskIndex} />
+          <Route exact path="/tasks/new" component={NewTaskForm} />
+          <Route exact path="/tasks/:taskId" component={TaskDetails} />
+          <Route exact path="/tasks/:taskId/edit" component={EditTaskForm} />
+          <Route path="/" component={Error404} />
+        </Switch>
+      </BrowserRouter>
+    </CurrentUserProvider>
+  );
 }
 
-export default CurrentUserProvider
+export default App;
