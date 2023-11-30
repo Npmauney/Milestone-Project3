@@ -9,7 +9,7 @@ function Home() {
             Photo by <a href="AUTHOR_LINK">Brenda Godinez</a> on <a href="UNSPLASH_LINK">Unsplash</a>
           </div>
         </div>
-        <a href="/places">
+        <a href="/tasks">
           <button className="btn-primary">To Do List</button>
         </a>
       </main>
