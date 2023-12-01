@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './Home'
 import TaskIndex from './tasks/TaskIndex'
 import Navigation from './Navigation'
@@ -15,7 +15,7 @@ function App() {
     <CurrentUserProvider>
       <BrowserRouter>
         <Navigation />
-        <Switch>
+        <Routes>
           <Route exact path="/" component={Home} />
           <Route exact path="/sign-up" component={SignUpForm} />
           <Route exact path="/login" component={LoginForm} />
@@ -24,7 +24,7 @@ function App() {
           <Route exact path="/tasks/:taskId" component={TaskDetails} />
           <Route exact path="/tasks/:taskId/edit" component={EditTaskForm} />
           <Route path="/" component={Error404} />
-        </Switch>
+        </Routes>
       </BrowserRouter>
     </CurrentUserProvider>
   );

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 
 function TaskIndex(data) {
 
-	const history = useHistory()
+	const navigate = useNavigate()
 	
 	const [tasks, setTasks] = useState([])
 
@@ -20,7 +20,7 @@ function TaskIndex(data) {
 		return (
 			<div className="col-sm-6" key={place.placeId}>
 				<h2>
-					<a href="#" onClick={() => history.push(`/tasks/${task.taskId}`)} >
+					<a href="#" onClick={() => navigate(`/tasks/${task.taskId}`)} >
 						{task.description}
 					</a>
 				</h2>
