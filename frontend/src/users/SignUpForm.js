@@ -13,18 +13,29 @@ function SignUpForm() {
 	})
 
 	async function handleSubmit(e) {
-		e.preventDefault()
-
-		await fetch(`http://localhost:5000/users/`, {
+		e.preventDefault();
+	  
+		try {
+		  const response = await fetch(`http://localhost:5000/users/`, {
 			method: 'POST',
 			headers: {
-				'Content-Type': 'application/json'
+			  'Content-Type': 'application/json',
 			},
-			body: JSON.stringify(user)
-		})
-
-		navigate(`/`)
-	}
+			body: JSON.stringify(user),
+		  });
+	  
+		  if (!response.ok) {
+			throw new Error(`HTTP error! Status: ${response.status}`);
+		  }
+	  
+		  // If everything is fine, navigate to the desired page
+		  navigate(`/`);
+		} catch (error) {
+		  console.error('Error submitting form:', error.message);
+		  // Handle the error, show a message to the user, or log additional details
+		}
+	  }
+	  
 
 	return (
 		<main>
