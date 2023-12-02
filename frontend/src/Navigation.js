@@ -45,11 +45,11 @@ function Navigation() {
                         To Do List
                     </a>
                 </li>
-                {/* <li>
-                    <a href="#" onClick={() => history.push("/places/new")}>
-                        Add Place
+                <li>
+                    <a href="#" onClick={() => navigate("/tasks/new")}>
+                        Add Task
                     </a>
-                </li> */}
+                </li>
                 {loginActions}
             </ul>
         </nav>

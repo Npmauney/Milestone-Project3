@@ -8,4 +8,10 @@ router.get('/', async (req, res) => {
     res.json(tasks)
 })
 
+router.post('/', async (req, res) => {
+   
+    const task = await Task.create(req.body)
+    res.json(task)
+})
+
 module.exports = router

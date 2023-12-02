@@ -18,16 +18,15 @@ function TaskIndex(data) {
 
 	let tasksFormatted = tasks.map((task) => {
 		return (
-			<div className="col-sm-6" key={place.placeId}>
+			<div className="col-sm-6" key={task.taskId}>
 				<h2>
 					<a href="#" onClick={() => navigate(`/tasks/${task.taskId}`)} >
 						{task.description}
 					</a>
 				</h2>
 				<p className="text-center">
-					{place.difficulty}
+					{task.difficulty}
 				</p>
-				<img style={{ maxWidth: 200 }} src={place.pic} alt={place.name} />
 				<p className="text-center">
 					Deadline: {task.deadline}
 				</p>
