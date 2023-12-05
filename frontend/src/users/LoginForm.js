@@ -29,8 +29,9 @@ function LoginForm() {
 
         if (response.status === 200) {
             setCurrentUser(data.user)
+            console.log(`${data.user.userId} HELLO`)
             localStorage.setItem('token', data.token)
-            navigate(`/`)
+            navigate(`/`, { state: { id: data.user.userId} })
         } else {
             setErrorMessage(data.message)
         }

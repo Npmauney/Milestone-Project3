@@ -11,7 +11,8 @@ function NewTaskForm() {
 	const [task, setTask] = useState({
 		description: '',
 		difficulty: '',
-		deadline: ''
+		deadline: '',
+		author_id: currentUser.userId
 	})
 
 	async function handleSubmit(e) {
