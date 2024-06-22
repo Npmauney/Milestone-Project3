@@ -1,1 +1,75 @@
+body {
+    background-color: rgb(1, 13, 18);
+    text-align: center;
+}
 
+h1 {
+    text-align: center;
+    color: #00829B;
+    font-family: monospace;
+}
+
+h2 {
+    color: #005B50;
+    font-family: cursive;
+}
+
+main {
+      margin-right: 0px;
+    margin-left: 0px;
+    padding: 45px;
+    background-color: rgba(0, 0, 0, 0.99); 
+    text-align: center;
+
+background-size: cover; /* Adjusts the background size to cover the entire container /
+background-position: left; / Centers the background image /
+background-repeat: no-repeat; / Prevents the background image from repeating /
+height: 100vh; / Sets the height to 100% of the viewport height */
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+
+nav {
+    background-color: rgba(1, 16, 67, 0.969);
+    padding: 10px;
+}
+
+nav ul {
+    flex-flow: initial;
+    list-style-type: none;
+    margin: 0;
+}
+
+nav li {
+    display: inline-flex;
+    margin-right: 55px;
+}
+
+nav a {
+    color: #334A52;
+    font-size: 2.5em;
+    font-family: fantasy;
+}
+
+nav a:hover {
+    color: #E8D5B5;
+    text-decoration: none;
+}
+
+form {
+    display: inline;
+}
+
+.inactive {
+    color: gray;
+}
+
+.border {
+    border: 1px solid gray;
+}
+
+div {
+    color: rgb(107, 175, 120)
+}

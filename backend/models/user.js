@@ -4,12 +4,15 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-
-    static associate({ Task }) {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate({Task}) {
       User.hasMany(Task, { as: 'author', foreignKey: 'author_id' })
     }
-
-  };
+  }
   User.init({
     userId: {
       type: DataTypes.SMALLINT,
@@ -23,8 +26,9 @@ module.exports = (sequelize, DataTypes) => {
     passwordDigest: DataTypes.STRING
   }, {
     sequelize,
-    underscored: true,
     modelName: 'User',
+    tableName: 'users',
+    underscored: true,
   });
   return User;
 };

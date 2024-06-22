@@ -1,10 +1,10 @@
 import { useContext, useState } from "react"
-import { useHistory } from "react-router"
+import { useNavigate } from "react-router"
 import { CurrentUser } from "../contexts/CurrentUser"
 
 function LoginForm() {
 
-    const history = useHistory()
+    const navigate = useNavigate()
 
     const { setCurrentUser } = useContext(CurrentUser)
 
@@ -29,8 +29,9 @@ function LoginForm() {
 
         if (response.status === 200) {
             setCurrentUser(data.user)
+            console.log(`${data.user.userId} HELLO`)
             localStorage.setItem('token', data.token)
-            history.push(`/`)
+            navigate(`/`, { state: { id: data.user.userId} })
         } else {
             setErrorMessage(data.message)
         }

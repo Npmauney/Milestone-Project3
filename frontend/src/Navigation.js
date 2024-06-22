@@ -1,22 +1,22 @@
 import { useState, useEffect, useContext } from 'react'
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 import { CurrentUser } from './contexts/CurrentUser';
 
 function Navigation() {
 
-    const history = useHistory()
+    const navigate = useNavigate()
 
     const { currentUser } = useContext(CurrentUser)
 
     let loginActions = (
         <>
             <li style={{ float: 'right' }}>
-                <a href="#" onClick={() => history.push("/sign-up")}>
+                <a href="#" onClick={() => navigate("/sign-up")}>
                     Sign Up
                 </a>
             </li>
             <li style={{ float: 'right' }}>
-                <a href="#" onClick={() => history.push("/login")}>
+                <a href="#" onClick={() => navigate("/login")}>
                     Login
                 </a>
             </li>
@@ -26,7 +26,7 @@ function Navigation() {
     if (currentUser) {
         loginActions = (
             <li style={{ float: 'right' }}>
-                Logged in as {currentUser.firstName} {currentUser.lastName}
+                <a>Logged in as {currentUser.firstName} {currentUser.lastName}</a>
                 <a href='#' onClick={() => {localStorage.removeItem('token'); window.location.reload()}}> Logout </a>
             </li>
         )
@@ -36,20 +36,20 @@ function Navigation() {
         <nav>
             <ul>
                 <li>
-                    <a href="#" onClick={() => history.push("/")}>
+                    <a href="#" onClick={() => navigate("/")}>
                         Home
                     </a>
                 </li>
                 <li>
-                    <a href="#" onClick={() => history.push("/tasks")}>
+                    <a href="#" onClick={() => navigate("/tasks")}>
                         To Do List
                     </a>
                 </li>
-                {/* <li>
-                    <a href="#" onClick={() => history.push("/places/new")}>
-                        Add Place
+                <li>
+                    <a href="#" onClick={() => navigate("/tasks/new")}>
+                        Add Task
                     </a>
-                </li> */}
+                </li>
                 {loginActions}
             </ul>
         </nav>
